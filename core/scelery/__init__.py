@@ -1,4 +1,4 @@
-from cluster.task import creq, regex
+from scelery.task import creq, regex
 
 # 后台启动
 # celery multi start celery -A cluster

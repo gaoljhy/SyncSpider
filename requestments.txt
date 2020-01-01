@@ -1,3 +1,4 @@
 celery[redis,auth,msgpack,eventlet]
 requests
 click
+supervisor

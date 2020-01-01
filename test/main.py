@@ -1,36 +1,4 @@
-from cluster import creq, regex
-from celery.result import AsyncResult
-
-
-def runHttp(urls):
-    """run some urls spider in sync
-    :param url: urls link list
-    """
-    res = []
-    for i in urls:
-        res.append(creq.delay(url=i, method=method, headers=headers).id)
-    return res
-
-
-def runRe(res, comp):
-    """run n task in re
-    :param res: task id list
-    """
-    reg = []
-    for i in res:
-        reg.append(
-            regex.delay(stro=AsyncResult(i).get()['200'], comp=comp).id
-        )
-    # print(reg)
-    with open("out", "w") as f:
-        j = 0
-        for i in reg:
-            j += 1
-            strc = AsyncResult(i).get()
-            f.write(' ---- ' + str(j) + ' - --- \n' + strc + '\n')
-
-    print("结果写入文件完成...")
-
+from core import runRe, runHttp
 
 if __name__ == "__main__":
     comp = u'<h2>.*?</h2>'
@@ -45,12 +13,8 @@ if __name__ == "__main__":
     # r = requests.get(url, headers=headers, params=payload)
     # print(r.content.decode('utf-8'))
     # print(r.status_code)
-    res = runHttp(urls=urls)
+    res = runHttp(urls=urls, method=method, headers=headers)
     runRe(res=res, comp=comp)
-
-# cli 接入接口
-# api框架设计
-# api 接入
 
 
 # Celery 启动

@@ -1,5 +1,5 @@
 from requests import request
-from cluster.celery import clus
+from scelery.celery import clus
 from re import compile
 # from json import dumps
 
