@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  python:
+    image: python
+    build:
+      context: .
+      dockerfile: Dockerfile
