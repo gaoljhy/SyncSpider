@@ -12,7 +12,7 @@ def runHttp(urls, method, headers):
     return res
 
 
-def runRe(res, comp):
+def runRe(res, comp,filepath):
     """run n task in re
     :param res: task id list
     """
@@ -21,7 +21,7 @@ def runRe(res, comp):
         reg.append(
             regex.delay(stro=AsyncResult(i).get()['200'], comp=comp).id
         )
-    with open("out", "w") as f:
+    with open(filepath, "w") as f:
         j = 0
         for i in reg:
             j += 1

@@ -14,7 +14,7 @@ if __name__ == "__main__":
     # print(r.content.decode('utf-8'))
     # print(r.status_code)
     res = runHttp(urls=urls, method=method, headers=headers)
-    runRe(res=res, comp=comp)
+    runRe(res=res, comp=comp,filepath="./")
 
 
 # Celery 启动
